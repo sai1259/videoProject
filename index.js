@@ -15,8 +15,12 @@ mongoose.connect(process.env.MONGO_URI)
 app.use(bodyParser.json());
 app.use('/upload', uploadRoutes);
 
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 
 app.listen( PORT, () => {
     console.log(`Server is running at ${PORT}`);
+})
+
+app.use("/", (req, res) => {
+    res.send("<h1> Welcome to videoPlayer Project");
 })
