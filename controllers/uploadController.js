@@ -29,6 +29,16 @@ const uploadNewVideo = async (req, res, next) => {
     }
 }
 
+const getAllVideos = async(req, res) => {
+    try {
+        const videos = await Uploader.find()
+        return res.json({ videos })
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+}
 
 
-module.exports = {uploadNewVideo}
+
+module.exports = {uploadNewVideo, getAllVideos};
